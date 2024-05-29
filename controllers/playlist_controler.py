@@ -50,20 +50,14 @@ class PlaylistController:
         if index < len(self.model.generated_playlist_uris):
             track_uri = self.model.generated_playlist_uris[index]
 
-            # Tworzenie przewijanego kontenera z Canvas i Scrollbar
-            canvas = ctk.CTkCanvas(self.view)  # Możesz spróbować z ctk.CTkCanvas, jeśli zachowuje odpowiednie funkcje
-            scrollbar = ctk.CTkScrollbar(self.view, command=canvas.yview)
-            canvas.configure(yscrollcommand=scrollbar.set)
+            canvas = ctk.CTkCanvas(self.view, width=500, bg='#2C2C2C')
 
-            canvas.grid(row=0, column=3, padx=10, pady=10, rowspan=600, sticky="nsew")
-            scrollbar.grid(row=0, column=4, padx=10, pady=10, rowspan=200, sticky="ns")
+            canvas.grid(row=0, column=3, padx=10, pady=10, rowspan=500, sticky="nsew")
 
             # Tworzenie przewijanej ramki na płótnie
             track_info_frame = TrackInfoWindow(canvas, Track(track_uri, self.model.sp), MusicPlayer())
             canvas_frame = canvas.create_window((0, 0), window=track_info_frame, anchor="nw")
 
-            # Ustawienie obszaru przewijania
-            track_info_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
             track_info_frame.wait_window()  # Czekanie na zamknięcie okna
             canvas.grid_forget()  # Usunięcie canvas po zamknięciu okna

@@ -3,6 +3,10 @@ from models.user_data import *
 from views.topviews.toptracksview import TopTracksView
 from views.homepage import HomePage
 from views.topviews.topartistview import TopArtistView
+from playlistGenerator import PlaylistView
+from models.playlist_model import PlaylistModel
+from controllers.playlist_controler import PlaylistController
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme('green')
@@ -34,11 +38,23 @@ class App(ctk.CTk):
         self.HomePage = HomePage
         self.Validation = TopTracksView
 
-        # Defining Frames and Packing it
-        for F in [HomePage, TopTracksView, TopArtistView]:
-            frame = F(container, bg_color="#8AA7A9", spotify_user=self.sp)
-            self.frames[F] = frame
+        self.frames[HomePage] = HomePage(container, bg_color="#8AA7A9", spotify_user=self.sp)
+        self.frames[TopTracksView] = TopTracksView(container, bg_color="#8AA7A9", spotify_user=self.sp)
+        self.frames[TopArtistView] = TopArtistView(container, bg_color="#8AA7A9", spotify_user=self.sp)
+        self.frames[PlaylistView] = PlaylistView(container)
+        playlist_model = PlaylistModel(self.sp.get_authorized_spotify_object())
+        playlist_controller = PlaylistController(playlist_model, self.frames[PlaylistView])
+        self.frames[PlaylistView].controller = playlist_controller
+
+        for F in [HomePage, TopTracksView, TopArtistView, PlaylistView]:
+            frame = self.frames[F]
             frame.grid(row=0, column=0, sticky="nsew")
+
+        # Defining Frames and Packing it
+        # for F in [HomePage, TopTracksView, TopArtistView, PlaylistView]:
+        #     frame = F(container, bg_color="#8AA7A9", spotify_user=self.sp)
+        #     self.frames[F] = frame
+        #     frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(HomePage)
 
@@ -53,6 +69,10 @@ class App(ctk.CTk):
         top_artists_button = ctk.CTkButton(navigation_frame, text="Top Artists",
                                            command=lambda: self.show_frame(TopArtistView))
         top_artists_button.pack(pady=10, padx=10)
+
+        playlist_button = ctk.CTkButton(navigation_frame, text="Playlist Generator",
+                                        command=lambda: self.show_frame(PlaylistView))
+        playlist_button.pack(pady=10, padx=10)
 
     def show_frame(self, cont):
         frame = self.frames[cont]

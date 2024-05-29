@@ -6,6 +6,7 @@ from io import BytesIO
 import requests
 import statistics
 
+
 class Playlist:
     def __init__(self, playlist_id, sp):
         self.playlist_id = playlist_id
@@ -59,9 +60,11 @@ class Playlist:
         years = [track.release_date.split('-')[0] for track in self.tracklist]
         return statistics.mode(years)
 
+
 def get_user_playlists(user):
     playlists = user.get_user_playlists()
     return [Playlist(playlist['id'], user.sp) for playlist in playlists['items']]
+
 
 class PlaylistsView(ctk.CTkFrame):
     def __init__(self, master, user):
@@ -138,6 +141,7 @@ class PlaylistsView(ctk.CTkFrame):
                      text=f"Most common genre: {playlist.get_most_common_genres()}").pack(pady=5)
         ctk.CTkLabel(self.playlist_summary_frame,
                      text=f"Most common year: {playlist.get_most_common_years()}").pack(pady=5)
+
 
 if __name__ == "__main__":
     user = SpotifyUser()

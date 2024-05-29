@@ -3,16 +3,17 @@ from models.user_data import SpotifyUser
 import customtkinter as ctk
 from tkinter import Listbox, StringVar, Toplevel, Label, END
 from PIL import Image, ImageTk
-import io
-import requests
+from models.music_player import MusicPlayer
+from models.artist import Artist
 from controllers.playlist_controler import PlaylistController
 from models.playlist_model import PlaylistModel
+from views.artistview import ArtistInfoView
 
 
 class PlaylistView(ctk.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
-        self.controller = None  # Początkowo ustaw na None
+        self.controller = None
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure((0, 1, 2), weight=1)
         self.setup_ui()
@@ -23,6 +24,7 @@ class PlaylistView(ctk.CTkFrame):
         self.search_frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
         self.search_entry = ctk.CTkEntry(self.search_frame, placeholder_text="Search for artists...")
         self.search_entry.pack(fill="x", padx=10, pady=10)
+        self.search_entry.bind("<Return>", lambda event: self.controller.search_artist())
         self.button_frame = ctk.CTkFrame(self.search_frame)
         self.button_frame.pack(fill="x", padx=10, pady=10)
         self.search_button = ctk.CTkButton(self.button_frame, text="Search",
@@ -97,8 +99,6 @@ class PlaylistView(ctk.CTkFrame):
                                                   ))
         self.preview_track_button.grid(row=0, column=1, padx=10, pady=10, sticky="we")
 
-    def preview_track(self):
-        pass
 
     def update_results(self, results):
         self.results_listbox.delete(0, END)
@@ -116,21 +116,12 @@ class PlaylistView(ctk.CTkFrame):
             self.generated_listbox.insert(END, track)
 
     def show_artist_details(self, artist):
-        detail_window = Toplevel(self)
-        detail_window.title(artist['name'])
-        detail_window.geometry("300x400")
-        if 'images' in artist and artist['images']:
-            image_url = artist['images'][0]['url']
-            response = requests.get(image_url)
-            img_data = Image.open(io.BytesIO(response.content))
-            img = img_data.resize((250, 250), Image.Resampling.LANCZOS)
-            photo = ImageTk.PhotoImage(img)
-            label_img = Label(detail_window, image=photo)
-            label_img.image = photo
-            label_img.pack(pady=10)
-        ctk.CTkLabel(detail_window, text=artist['name'], font=("Arial", 18, "bold")).pack(pady=10)
-        ctk.CTkLabel(detail_window, text=f"Followers: {artist['followers']['total']}", font=("Arial", 14)).pack(pady=10)
-        ctk.CTkLabel(detail_window, text=f"Popularity: {artist['popularity']}", font=("Arial", 14)).pack(pady=10)
+        artist = Artist(artist['id'], SpotifyUser())
+        music_player = MusicPlayer()
+        view = ArtistInfoView(self.controller.view, artist, music_player)
+        view.grid(row=0, column=0, padx=10, pady=10, rowspan=230, sticky="nsew")
+
+
 
 
 
