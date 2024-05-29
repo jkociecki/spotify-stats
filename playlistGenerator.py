@@ -92,7 +92,9 @@ class PlaylistView(ctk.CTkFrame):
                                                  ))
         self.delete_track_button.grid(row=0, column=0, padx=10, pady=10, sticky="we")
         self.preview_track_button = ctk.CTkButton(self.playlist_buttons_frame, text="Preview Track",
-                                                  command=lambda: self.controller.preview_track())
+                                                  command=lambda: self.controller.preview_track(
+                                                        self.generated_listbox.curselection()[0]
+                                                  ))
         self.preview_track_button.grid(row=0, column=1, padx=10, pady=10, sticky="we")
 
     def preview_track(self):

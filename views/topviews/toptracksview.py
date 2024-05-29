@@ -1,5 +1,5 @@
 from views.topviews.toptrackslayout import *
-from views.topviews.trackinfo import TrackInfoWindow
+from views.trackinfo import TrackInfoWindow
 from models.track import Track
 from models.music_player import MusicPlayer
 

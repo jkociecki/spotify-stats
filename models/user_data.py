@@ -8,7 +8,7 @@ class SpotifyUser:
     def __init__(self):
         #self.access_token = start_auth_server()
         #self.sp = spotipy.Spotify(auth=self.access_token)
-        token = 'BQABn2sQ-wOpXPK710x9ih26Njd6vLN33z-xNksVrTdPveiWqycox694lCH-ezU68oVugWQrFwdQB-Zt7cCQsMR9q_r26brh6XYZyzhPofexRrij57S2jqyCUHnPUj1186YhRJBKfTnKaJTziS_OonxsyxlnxPF6rNx2qNYzAEeaiwpAjtuZyLWbdOwXpGatvgzaw6KRrJXrQsrqq-3erYbp'
+        token = 'BQDCQLfGzQfCPCT1hfoSuayI0STurZQZyQVtaYPGKa_h2U4IcVsbFKMVmbNcaXQIq8od29HMpFiXcArJcJIJctNSPsBM1Jk7X-Rr5s70MlPPVbLcMRU7EX3YFP6ey50b-fDIwYoBc65riENJIOvNbzVOYQAzZmU8TLRaMzYiap4mL4KPQ8vh7zkw3K6ZCZxIAvpoztxDew-e3j-4-raVg6wf'
         self.sp = spotipy.Spotify(auth=token)
 
     @lru_cache(maxsize=128)
