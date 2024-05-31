@@ -28,11 +28,11 @@ class PlaylistController:
         if selected_index:
             artist = self.model.search_results[selected_index[0]]
             self.model.add_artist(artist)
-            self.view.update_selected_artists_listbox(self.model.selected_artists)
+            self.view.update_selected_listbox(self.model.selected_artists)
 
     def clear_selected_artists(self):
         self.model.clear_selected_artists()
-        self.view.update_selected_artists_listbox(self.model.selected_artists)
+        self.view.update_selected_listbox(self.model.selected_artists)
 
     def generate_playlist(self):
         playlist = self.model.generate_playlist()

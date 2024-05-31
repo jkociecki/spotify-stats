@@ -5,6 +5,7 @@ import uuid
 import threading
 import time
 
+
 class MusicPlayer:
     def __init__(self):
         pygame.mixer.init()
@@ -56,8 +57,8 @@ class MusicPlayer:
             self.update_timer.cancel()
 
     def reset_player(self):
-        self.stop_music()  # Zatrzymaj muzykę
-        pygame.mixer.music.unload()  # Dodatkowo wyładuj plik, jeśli używasz pygame 2.0.0 lub nowszej
+        self.stop_music()
+        pygame.mixer.music.unload()
         if self.local_file_path and os.path.exists(self.local_file_path):
             os.remove(self.local_file_path)
         self.local_file_path = None
@@ -89,6 +90,5 @@ class MusicPlayer:
 
     def update_progress(self):
         progress = self.get_progress()
-        print(f"Progress: {progress * 100:.2f}%")
         if self.playing and not self.paused:
             self.start_update_timer()

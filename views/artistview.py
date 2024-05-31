@@ -14,7 +14,7 @@ class ArtistInfoView(ctk.CTkFrame):
         self.artist = artist
         self.music_player = music_player
         self.progress_var = ctk.DoubleVar()
-
+        self.current_track_uri = None
         self.controller = ArtistInfoController(self, music_player)
 
         self.create_widgets()
@@ -25,7 +25,7 @@ class ArtistInfoView(ctk.CTkFrame):
         main_frame.pack(fill="both", expand=True, padx=20, pady=20)
 
         name_label = ctk.CTkLabel(main_frame, text=self.artist.get_artist_name(), font=("Arial", 18, "bold"))
-        name_label.pack(pady=(0, 10))
+        name_label.pack(pady=(0, 5))
 
         try:
             response = requests.get(self.artist.get_artist_image_url())
@@ -33,7 +33,7 @@ class ArtistInfoView(ctk.CTkFrame):
             image_ctk = ctk.CTkImage(light_image=image, dark_image=image, size=(150, 150))
             image_label = ctk.CTkLabel(main_frame, image=image_ctk, text='')
             image_label.image = image_ctk
-            image_label.pack(pady=10)
+            image_label.pack(pady=5)
         except requests.RequestException as e:
             print(f"Failed to load image: {e}")
 
@@ -49,8 +49,7 @@ class ArtistInfoView(ctk.CTkFrame):
 
         for i, track in enumerate(self.artist.get_artist_top_tracks()['tracks']):
             play_button = ctk.CTkButton(info_frame, text=f"Play {track['name']}",
-                                        command=lambda track_uri=track['preview_url']: self.controller.play_toggle(
-                                            track_uri),
+                                        command=lambda track_uri=track['preview_url']: self.update_and_play(track_uri),
                                         width=250, anchor="w")
             play_button.pack(pady=2, fill="x")
             if i == 5:
@@ -59,7 +58,8 @@ class ArtistInfoView(ctk.CTkFrame):
         controls_frame = ctk.CTkFrame(main_frame)
         controls_frame.pack(pady=5)
 
-        self.play_button = ctk.CTkButton(controls_frame, text="Play", command=lambda: self.controller.play_toggle())
+        self.play_button = ctk.CTkButton(controls_frame, text="Play", command=self.play_current_track)
+
         self.play_button.grid(row=0, column=0, padx=10)
 
         self.stop_button = ctk.CTkButton(controls_frame, text="Stop", command=self.controller.stop_music)
@@ -71,8 +71,15 @@ class ArtistInfoView(ctk.CTkFrame):
         self.close_button = ctk.CTkButton(main_frame, text="Close", command=self.close_window)
         self.close_button.pack(pady=10)
 
+    def update_and_play(self, track_uri):
+        self.current_track_uri = track_uri
+        self.controller.play_toggle(track_uri)
 
-
+    def play_current_track(self):
+        if self.current_track_uri:
+            self.update_and_play(self.current_track_uri)
+        else:
+            print("No track selected")
     def update_progress(self):
         self.controller.update_progress()
         self.after(300, self.update_progress)

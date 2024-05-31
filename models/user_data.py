@@ -8,7 +8,7 @@ class SpotifyUser:
     def __init__(self):
         #self.access_token = start_auth_server()
         #self.sp = spotipy.Spotify(auth=self.access_token)
-        token = 'BQCD_vT5oS-aTmPGZ58cf5VqIs3BD3b1CZ9bp7UatJaZO74yi8Fe8ZXMzJopmof_BTD01ZG7Ve5vnGWltcZmFvWM09-Ykz-r5k2RnwvHziiKIK1L9l8z2hThNnl3N2nQgmDQ_vY6aGhX9k6SxWbx2S_hkNCjhUeraSIVMDUXXw-E2MWBriup_Iu5yWcN47ySQbo82TK6AINNE1mY27zMjA4_'
+        token = 'BQC6oEwoIbtPYSOM00jDjf_ggelUPdRzRctS83eai2w9Lk34JrYGoqFdXbRljQMDuYvTNruwkCX3_-BPaQXEo1Uc7bVmpm1KVRsyN5BwklJUdsabGmGjbbGuWHtobRbM21_SE9Z-GZuVcn4C7EJMwAD9zoCnxzDCTAkBSR1CN6bU0xTTQYVjp3Kc4lIijDVwk0DijVz3VyswjkGCnMgogcGE'
         self.sp = spotipy.Spotify(auth=token)
 
     @lru_cache(maxsize=128)
@@ -74,3 +74,22 @@ class SpotifyUser:
         :return: Spotify object
         '''
         return self.sp
+
+    def get_genres(self):
+        return self.sp.recommendation_genre_seeds()['genres']
+
+    def generate_playlist(self, selected_genres, features, number_of_tracks, market):
+        print(features)
+        return self.sp.recommendations(seed_genres=selected_genres,
+                          target_danceability=features['danceability'],
+                          target_energy=features['energy'],
+                          target_valence=features['valence'],
+                          target_liveness=features['liveness'],
+                          target_instrumentalness=features['instrumentalness'],
+                          target_acousticness=features['acousticness'],
+                          target_speechiness=features['speechiness'],
+                          limit=str(number_of_tracks),
+                          market=market)
+
+    def get_track_names(self, uris):
+        return [self.sp.track(uri)['name'] for uri in uris]

@@ -17,6 +17,7 @@ class Track:
         self._cover_url = response['album']['images'][0]['url']
         self._preview_url = response['preview_url']
         self._popularity = response['popularity']
+        self._genres = self.sp.artist(response['artists'][0]['id'])['genres']
 
         self._danceability = audio_features[0]['danceability']
         self._energy = audio_features[0]['energy']
@@ -67,6 +68,10 @@ class Track:
     @property
     def loudness(self):
         return self._loudness
+
+    @property
+    def genres(self):
+        return self._genres
 
     @property
     def speechiness(self):

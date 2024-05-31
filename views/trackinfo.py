@@ -1,15 +1,17 @@
 import requests
 import pygame
 from tkinter import *
-from PIL import Image, ImageTk
+from PIL import Image
 from io import BytesIO
 import customtkinter as ctk
 from controllers.music_player_controler import TrackInfoController
+from models.track import Track
+from models.music_player import MusicPlayer
 
 
 class TrackInfoWindow(ctk.CTkFrame):
-    def __init__(self, parent, track, music_player):
-        super().__init__(parent)
+    def __init__(self, parent, track: Track, music_player: MusicPlayer, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
         self.track = track
         self.music_player = music_player
         self.progress_var = DoubleVar()
