@@ -1,5 +1,7 @@
 from views.topviews.toptrackslayout import *
-
+from views.artistview import ArtistInfoView
+from models.artist import Artist
+from models.music_player import MusicPlayer
 
 class TopArtistView(BaseView):
     def add_table_headers(self):
@@ -35,5 +37,29 @@ class TopArtistView(BaseView):
             print("Short term data already fetched")
             self.add_table_data(self.short_term_data)
 
+    def show_medium_term(self):
+        if not self.medium_term_data or self.current_limit != self.previous_limit:
+            data = self.sp.get_top_artists(time_range='medium_term', limit=self.current_limit)
+            self.medium_term_data = data
+            self.add_table_data(data)
+        else:
+            print("Medium term data already fetched")
+            self.add_table_data(self.medium_term_data)
+
+    def show_long_term(self):
+        if not self.long_term_data or self.current_limit != self.previous_limit:
+            data = self.sp.get_top_artists(time_range='long_term', limit=self.current_limit)
+            self.long_term_data = data
+            self.add_table_data(data)
+        else:
+            print("Long term data already fetched")
+            self.add_table_data(self.long_term_data)
+
+
+
     def show_info(self, artist_id):
-        pass
+        artist = Artist(artist_id, self.sp)
+        view = ArtistInfoView(self, artist, MusicPlayer())
+        view.grid(row=0, column=4, rowspan=200, sticky="nsew")
+
+

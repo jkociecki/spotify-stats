@@ -17,6 +17,7 @@ class BaseView(ctk.CTkFrame):
         short_term_button = ctk.CTkButton(self, text="Short Term", command=self.show_short_term)
         medium_term_button = ctk.CTkButton(self, text="Medium Term", command=self.show_medium_term)
         long_term_button = ctk.CTkButton(self, text="Long Term", command=self.show_long_term)
+        self.to_be_shown_label = ctk.CTkLabel(self, text=f'To be shown: {self.current_limit}', font=("Arial", 12))
         self.limit_entry = ctk.CTkEntry(self, width=100, font=("Arial", 12), placeholder_text="Enter limit")
 
         self.limit_entry.bind("<Return>", self.handle_enter)
@@ -24,6 +25,7 @@ class BaseView(ctk.CTkFrame):
         short_term_button.grid(row=0, column=1, pady=10, padx=10, sticky='e')
         medium_term_button.grid(row=0, column=2, pady=10, padx=10)
         long_term_button.grid(row=0, column=3, pady=10, padx=10)
+        self.to_be_shown_label.grid(row=0, column=4, pady=10, padx=10)
         self.limit_entry.grid(row=0, column=4, pady=10, padx=10, sticky="w")
 
         self.scrollable_frame = ctk.CTkScrollableFrame(self)
@@ -43,6 +45,7 @@ class BaseView(ctk.CTkFrame):
 
     def handle_enter(self, event):
         limit = self.limit_entry.get()
+        self.to_be_shown_label.configure(text=f'To be shown: {limit}')
         self.limit_entry.delete(0, 'end')
         if limit.isdigit():
             self.previous_limit = self.current_limit

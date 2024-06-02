@@ -8,7 +8,7 @@ class SpotifyUser:
     def __init__(self):
         #self.access_token = start_auth_server()
         #self.sp = spotipy.Spotify(auth=self.access_token)
-        token = 'BQC6oEwoIbtPYSOM00jDjf_ggelUPdRzRctS83eai2w9Lk34JrYGoqFdXbRljQMDuYvTNruwkCX3_-BPaQXEo1Uc7bVmpm1KVRsyN5BwklJUdsabGmGjbbGuWHtobRbM21_SE9Z-GZuVcn4C7EJMwAD9zoCnxzDCTAkBSR1CN6bU0xTTQYVjp3Kc4lIijDVwk0DijVz3VyswjkGCnMgogcGE'
+        token = 'BQCTZ-dWI6UZc-4qfhGSck6-SCO7lJR_k0YbKBeMeOtKrL9QhVX9WL-9MoXHAGNToRhZJGJXJ43qKYV3woI7VWQCO65Dl6wZYh3DS7KQ2eLY3np3OaVdT249VPCKBehhihS9R9-MVzG8qQg1NldL7peWDvnhUiVHap6E8nMKBywb9ktlwRtBV25LO14rXmBlEPSVbmcMJHq9D7kzwsDaswb-G1VmzUwzAYUBfShzERt89pBurOmyfQD-LiOK7hCbPJRe788N76ncpnbUVtGiZexzZzgc49Ws3kp0IJXuOr0'
         self.sp = spotipy.Spotify(auth=token)
 
     @lru_cache(maxsize=128)
@@ -90,6 +90,11 @@ class SpotifyUser:
                           target_speechiness=features['speechiness'],
                           limit=str(number_of_tracks),
                           market=market)
+
+    def download_playlist(self, name, description, uris):
+        self.sp.user_playlist_create(user=self.sp.me()['id'], name=name, description=description)
+        playlist_id = self.sp.current_user_playlists()['items'][0]['id']
+        self.sp.playlist_add_items(playlist_id, uris)
 
     def get_track_names(self, uris):
         return [self.sp.track(uri)['name'] for uri in uris]

@@ -3,6 +3,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import urllib.parse
 import webbrowser
 
+
 class SpotifyAuthHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -34,8 +35,17 @@ class SpotifyAuthHandler(BaseHTTPRequestHandler):
 def start_auth_server():
     server_address = ('', 8888)
     httpd = HTTPServer(server_address, SpotifyAuthHandler)
-    auth_url = f"https://accounts.spotify.com/authorize?client_id=1da6cc873e344e9f9ac5838978410461&response_type=code&redirect_uri=http://localhost:8888/callback&scope=user-library-read user-top-read&show_dialog=true"
+    scope = (
+        'user-library-read user-top-read user-read-playback-state user-read-currently-playing '
+        'user-follow-read user-read-recently-played playlist-read-private playlist-modify-public playlist-modify-private'
+    )
+    auth_url = f"https://accounts.spotify.com/authorize?client_id=1da6cc873e344e9f9ac5838978410461&response_type=code&redirect_uri=http://localhost:8888/callback&scope={urllib.parse.quote(scope)}&show_dialog=true"
     print("Opening the authorization URL in your default web browser...")
     webbrowser.open(auth_url)
     httpd.handle_request()
     return httpd.access_token
+
+
+if __name__ == "__main__":
+    access_token = start_auth_server()
+    print(f"Access Token: {access_token}")

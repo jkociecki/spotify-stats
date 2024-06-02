@@ -33,8 +33,10 @@ class PlaylistModelArtists:
         self.generated_playlist_uris = [track['uri'] for track in recommended_tracks]
         return self.generated_playlist
 
-    def download_playlist(self):
-        pass
+    def download_playlist(self, name, description):
+        self.sp.user_playlist_create(user=self.sp.me()['id'], name=name, description=description)
+        playlist_id = self.sp.current_user_playlists()['items'][0]['id']
+        self.sp.playlist_add_items(playlist_id, self.generated_playlist_uris)
 
 #
 # class PlaylistModelTracks:

@@ -71,7 +71,7 @@ class ArtistInfoView(ctk.CTkFrame):
         self.close_button = ctk.CTkButton(main_frame, text="Close", command=self.close_window)
         self.close_button.pack(pady=10)
 
-    def update_and_play(self, track_uri):
+    def update_and_play(self, track_uri: str):
         self.current_track_uri = track_uri
         self.controller.play_toggle(track_uri)
 

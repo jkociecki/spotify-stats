@@ -8,7 +8,7 @@ from views.trackinfo import TrackInfoWindow
 
 
 class ArtistPlaylistView(BasePlaylistView):
-    def __init__(self, master, spotify_user: SpotifyUser):
+    def __init__(self, master: ctk.CTk, spotify_user: SpotifyUser):
         super().__init__(master, spotify_user)
 
     def show_artist_details(self, artist):
@@ -19,7 +19,7 @@ class ArtistPlaylistView(BasePlaylistView):
 
 
 class TracksPlaylistView(BasePlaylistView):
-    def __init__(self, master, spotify_user: SpotifyUser):
+    def __init__(self, master: ctk.CTk, spotify_user: SpotifyUser):
         super().__init__(master, spotify_user)
 
     def show_artist_details(self, track):

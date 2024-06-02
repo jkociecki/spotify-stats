@@ -18,6 +18,7 @@ class Track:
         self._preview_url = response['preview_url']
         self._popularity = response['popularity']
         self._genres = self.sp.artist(response['artists'][0]['id'])['genres']
+        self._uri = response['uri']
 
         self._danceability = audio_features[0]['danceability']
         self._energy = audio_features[0]['energy']
@@ -40,6 +41,10 @@ class Track:
     @property
     def artist(self):
         return self._artist
+
+    @property
+    def uri(self):
+        return self._uri
 
     @property
     def title(self):
