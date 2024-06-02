@@ -13,12 +13,12 @@ The Spotify Playlist Generator is an application built using Tkinter and CustomT
 - **View Top Tracks and Artists**: Display the user's top tracks and artists.
 - **Playlist Statistics**: Show statistics for selected playlists.
 
-## Installation
+## Installation 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/jkociecki/spotify-stats
+   cd spotify-stats
    ```
 
 2. **Create and activate a virtual environment**:
