@@ -151,11 +151,11 @@ In order to generate playlists with the help of artificial intelligence, after e
 
 ## Documentation
 
-The documentation for the project is available in the following links:
+The documentation for the project is available at the following links:
 
-- [Controllers](docs/controllers/controllers.html)
-- [Modules](docs/models/models.html)
-- [Views](docs/views/views.html)
+- [Controllers](https://github.com/jkociecki/spotify-stats/blob/master/docs/controllers/controllers.html)
+- [Models](https://github.com/jkociecki/spotify-stats/blob/master/docs/models/models.html)
+- [Views](https://github.com/jkociecki/spotify-stats/blob/master/docs/views/views.html)
 
 ## Contributing
 
