@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models.user_data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="models.html"><font color="#ffffff">models</font></a>.user_data</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../..">index</a><br><a href="file:c%3A%5Cusers%5Cflex%205%20iil%5Conedrive%5Cdesktop%5Cstudia%5Csemestr%204%5Cskryptowe%5Cprojekt%5Cmodels%5Cuser_data.py">c:\users\flex 5 iil\onedrive\desktop\studia\semestr 4\skryptowe\projekt\models\user_data.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="spotipy.html">spotipy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.user_data.html#SpotifyUser">SpotifyUser</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SpotifyUser">class <strong>SpotifyUser</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;to&nbsp;interact&nbsp;with&nbsp;Spotify&nbsp;API&nbsp;using&nbsp;Spotipy.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;initializes&nbsp;the&nbsp;Spotify&nbsp;client&nbsp;with&nbsp;an&nbsp;access&nbsp;token&nbsp;and&nbsp;provides&nbsp;various&nbsp;methods&nbsp;to&nbsp;retrieve&nbsp;user&nbsp;data<br>
+and&nbsp;manage&nbsp;playlists.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SpotifyUser-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;the&nbsp;<a href="#SpotifyUser">SpotifyUser</a>&nbsp;with&nbsp;an&nbsp;access&nbsp;token&nbsp;and&nbsp;Spotify&nbsp;client.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-download_playlist"><strong>download_playlist</strong></a>(self, name, description, uris)</dt><dd><tt>Create&nbsp;and&nbsp;download&nbsp;a&nbsp;playlist&nbsp;with&nbsp;specified&nbsp;track&nbsp;URIs.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;Name&nbsp;of&nbsp;the&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;(str):&nbsp;Description&nbsp;of&nbsp;the&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;uris&nbsp;(list):&nbsp;List&nbsp;of&nbsp;track&nbsp;URIs.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-generate_playlist"><strong>generate_playlist</strong></a>(self, selected_genres, features, number_of_tracks, market)</dt><dd><tt>Generate&nbsp;a&nbsp;playlist&nbsp;based&nbsp;on&nbsp;selected&nbsp;genres&nbsp;and&nbsp;track&nbsp;features.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;selected_genres&nbsp;(list):&nbsp;List&nbsp;of&nbsp;selected&nbsp;genres.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;features&nbsp;(dict):&nbsp;Dictionary&nbsp;of&nbsp;track&nbsp;features.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;number_of_tracks&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;tracks&nbsp;in&nbsp;the&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;market&nbsp;(str):&nbsp;Market&nbsp;(e.g.,&nbsp;'US').<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;Playlist&nbsp;recommendations.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_authorized_spotify_object"><strong>get_authorized_spotify_object</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;authorized&nbsp;Spotify&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;spotipy.Spotify:&nbsp;Authorized&nbsp;Spotify&nbsp;client.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_genres"><strong>get_genres</strong></a>(self)</dt><dd><tt>Get&nbsp;available&nbsp;genres&nbsp;for&nbsp;recommendations.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;available&nbsp;genres.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_saved_tracks"><strong>get_saved_tracks</strong></a>(self, limit=10)</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;saved&nbsp;tracks.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;limit&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;tracks&nbsp;to&nbsp;return.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;saved&nbsp;tracks.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_top_artists"><strong>get_top_artists</strong></a>(self, limit=10, time_range='short_term')</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;top&nbsp;artists.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;limit&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;artists&nbsp;to&nbsp;return.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time_range&nbsp;(str):&nbsp;Time&nbsp;range&nbsp;for&nbsp;top&nbsp;artists&nbsp;(short_term,&nbsp;medium_term,&nbsp;long_term).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;top&nbsp;artists.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_top_tracks"><strong>get_top_tracks</strong></a>(self, limit=10, time_range='short_term')</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;top&nbsp;tracks.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;limit&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;tracks&nbsp;to&nbsp;return.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time_range&nbsp;(str):&nbsp;Time&nbsp;range&nbsp;for&nbsp;top&nbsp;tracks&nbsp;(short_term,&nbsp;medium_term,&nbsp;long_term).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;top&nbsp;tracks.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_track_names"><strong>get_track_names</strong></a>(self, uris)</dt><dd><tt>Get&nbsp;track&nbsp;names&nbsp;from&nbsp;track&nbsp;URIs.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;uris&nbsp;(list):&nbsp;List&nbsp;of&nbsp;track&nbsp;URIs.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;track&nbsp;names.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_user_playlists"><strong>get_user_playlists</strong></a>(self, limit=10)</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;playlists.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;limit&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;playlists&nbsp;to&nbsp;return.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;playlists.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_user_profile"><strong>get_user_profile</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;profile.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dict:&nbsp;User's&nbsp;profile&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="SpotifyUser-get_user_top_items"><strong>get_user_top_items</strong></a>(self, limit=10, time_range='short_term')</dt><dd><tt>Get&nbsp;the&nbsp;user's&nbsp;top&nbsp;items.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;limit&nbsp;(int):&nbsp;Number&nbsp;of&nbsp;items&nbsp;to&nbsp;return.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time_range&nbsp;(str):&nbsp;Time&nbsp;range&nbsp;for&nbsp;top&nbsp;items&nbsp;(short_term,&nbsp;medium_term,&nbsp;long_term).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;A&nbsp;list&nbsp;of&nbsp;top&nbsp;items.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

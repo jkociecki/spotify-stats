@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models.music_player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="models.html"><font color="#ffffff">models</font></a>.music_player</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../..">index</a><br><a href="file:c%3A%5Cusers%5Cflex%205%20iil%5Conedrive%5Cdesktop%5Cstudia%5Csemestr%204%5Cskryptowe%5Cprojekt%5Cmodels%5Cmusic_player.py">c:\users\flex 5 iil\onedrive\desktop\studia\semestr 4\skryptowe\projekt\models\music_player.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top><a href="requests.html">requests</a><br>
+<a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="uuid.html">uuid</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.music_player.html#MusicPlayer">MusicPlayer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MusicPlayer">class <strong>MusicPlayer</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;responsible&nbsp;for&nbsp;playing&nbsp;music<br>
+Music&nbsp;is&nbsp;given&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;a&nbsp;URL<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MusicPlayer-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;the&nbsp;music&nbsp;player</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-download_preview"><strong>download_preview</strong></a>(self, preview_url)</dt><dd><tt>Download&nbsp;the&nbsp;music&nbsp;preview&nbsp;from&nbsp;the&nbsp;given&nbsp;URL<br>
+:param&nbsp;preview_url:&nbsp;link&nbsp;to&nbsp;the&nbsp;music&nbsp;preview<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-get_progress"><strong>get_progress</strong></a>(self)</dt><dd><tt>Calculate&nbsp;the&nbsp;progress&nbsp;of&nbsp;the&nbsp;music<br>
+:return:&nbsp;percentage&nbsp;of&nbsp;the&nbsp;music&nbsp;played</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-play_music"><strong>play_music</strong></a>(self, preview_url)</dt><dd><tt>Temporarily&nbsp;download&nbsp;and&nbsp;play&nbsp;the&nbsp;music&nbsp;from&nbsp;the&nbsp;given&nbsp;URL<br>
+:param&nbsp;preview_url:&nbsp;link&nbsp;to&nbsp;the&nbsp;music&nbsp;preview<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-reset_player"><strong>reset_player</strong></a>(self)</dt><dd><tt>Reset&nbsp;the&nbsp;player,&nbsp;unload&nbsp;the&nbsp;music&nbsp;and&nbsp;remove&nbsp;the&nbsp;local&nbsp;file<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-start_update_timer"><strong>start_update_timer</strong></a>(self)</dt><dd><tt>Start&nbsp;the&nbsp;update&nbsp;timer&nbsp;in&nbsp;a&nbsp;separate&nbsp;thread<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-stop_music"><strong>stop_music</strong></a>(self)</dt><dd><tt>Stop&nbsp;the&nbsp;music,&nbsp;handle&nbsp;the&nbsp;timer<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="MusicPlayer-update_progress"><strong>update_progress</strong></a>(self)</dt><dd><tt>Update&nbsp;the&nbsp;progress&nbsp;of&nbsp;the&nbsp;music<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

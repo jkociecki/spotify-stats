@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models.playlist_model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="models.html"><font color="#ffffff">models</font></a>.playlist_model</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../..">index</a><br><a href="file:c%3A%5Cusers%5Cflex%205%20iil%5Conedrive%5Cdesktop%5Cstudia%5Csemestr%204%5Cskryptowe%5Cprojekt%5Cmodels%5Cplaylist_model.py">c:\users\flex 5 iil\onedrive\desktop\studia\semestr 4\skryptowe\projekt\models\playlist_model.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.playlist_model.html#PlaylistModelArtists">PlaylistModelArtists</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PlaylistModelArtists">class <strong>PlaylistModelArtists</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PlaylistModelArtists">PlaylistModelArtists</a>(spotify_user:&nbsp;spotipy.client.Spotify,&nbsp;type:&nbsp;str)<br>
+&nbsp;<br>
+Model&nbsp;for&nbsp;the&nbsp;playlist&nbsp;generator&nbsp;based&nbsp;on&nbsp;given&nbsp;type&nbsp;of&nbsp;search<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PlaylistModelArtists-__init__"><strong>__init__</strong></a>(self, spotify_user: spotipy.client.Spotify, type: str)</dt><dd><tt>Initialize&nbsp;the&nbsp;model,&nbsp;set&nbsp;the&nbsp;Spotify&nbsp;<a href="builtins.html#object">object</a>&nbsp;and&nbsp;type&nbsp;of&nbsp;search<br>
+Initialize&nbsp;placeholders&nbsp;for&nbsp;search&nbsp;results,&nbsp;selected&nbsp;artists,&nbsp;generated&nbsp;playlist&nbsp;and&nbsp;playlist&nbsp;uris<br>
+:param&nbsp;spotify_user:&nbsp;SpotifyUser&nbsp;<a href="builtins.html#object">object</a><br>
+:param&nbsp;type:&nbsp;type&nbsp;of&nbsp;search&nbsp;e.g.&nbsp;'artist'&nbsp;or&nbsp;'track'</tt></dd></dl>
+
+<dl><dt><a name="PlaylistModelArtists-add_artist"><strong>add_artist</strong></a>(self, artist)</dt><dd><tt>Add&nbsp;artist&nbsp;to&nbsp;the&nbsp;selected&nbsp;artists&nbsp;list<br>
+:param&nbsp;artist:&nbsp;Artist&nbsp;<a href="builtins.html#object">object</a><br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PlaylistModelArtists-clear_selected_artists"><strong>clear_selected_artists</strong></a>(self)</dt><dd><tt>Clear&nbsp;the&nbsp;selected&nbsp;artists&nbsp;list<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PlaylistModelArtists-download_playlist"><strong>download_playlist</strong></a>(self, name, description)</dt><dd><tt>Create&nbsp;a&nbsp;playlist&nbsp;in&nbsp;the&nbsp;user&nbsp;Spotify&nbsp;account<br>
+:param&nbsp;name:&nbsp;name&nbsp;of&nbsp;the&nbsp;playlist<br>
+:param&nbsp;description:&nbsp;description&nbsp;of&nbsp;the&nbsp;playlist<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PlaylistModelArtists-generate_playlist"><strong>generate_playlist</strong></a>(self)</dt><dd><tt>Generate&nbsp;playlist&nbsp;based&nbsp;on&nbsp;the&nbsp;selected&nbsp;artists&nbsp;or&nbsp;tracks<br>
+Collect&nbsp;the&nbsp;uris&nbsp;of&nbsp;the&nbsp;selected&nbsp;artists&nbsp;or&nbsp;tracks&nbsp;and&nbsp;generate&nbsp;recommendations<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PlaylistModelArtists-search_artist"><strong>search_artist</strong></a>(self, artist_name)</dt><dd><tt>Search&nbsp;for&nbsp;artists&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;name&nbsp;in&nbsp;the&nbsp;Spotify&nbsp;API<br>
+:param&nbsp;artist_name:&nbsp;name&nbsp;of&nbsp;the&nbsp;artist<br>
+:return:&nbsp;response&nbsp;from&nbsp;the&nbsp;API</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

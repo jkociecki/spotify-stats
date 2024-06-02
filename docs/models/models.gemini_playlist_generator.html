@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models.gemini_playlist_generator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="models.html"><font color="#ffffff">models</font></a>.gemini_playlist_generator</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../..">index</a><br><a href="file:c%3A%5Cusers%5Cflex%205%20iil%5Conedrive%5Cdesktop%5Cstudia%5Csemestr%204%5Cskryptowe%5Cprojekt%5Cmodels%5Cgemini_playlist_generator.py">c:\users\flex 5 iil\onedrive\desktop\studia\semestr 4\skryptowe\projekt\models\gemini_playlist_generator.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.gemini_playlist_generator.html#PlaylistGeneratorAiModel">PlaylistGeneratorAiModel</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PlaylistGeneratorAiModel">class <strong>PlaylistGeneratorAiModel</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PlaylistGeneratorAiModel">PlaylistGeneratorAiModel</a>(spotify:&nbsp;models.user_data.SpotifyUser&nbsp;=&nbsp;None)<br>
+&nbsp;<br>
+Class&nbsp;for&nbsp;generating&nbsp;playlists&nbsp;using&nbsp;AI<br>
+Communication&nbsp;with&nbsp;the&nbsp;Gemini&nbsp;AI&nbsp;model<br>
+Supposed&nbsp;to&nbsp;generate&nbsp;list&nbsp;of&nbsp;tracks&nbsp;based&nbsp;on&nbsp;the&nbsp;description<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PlaylistGeneratorAiModel-__init__"><strong>__init__</strong></a>(self, spotify: models.user_data.SpotifyUser = None)</dt><dd><tt>:param&nbsp;spotify:&nbsp;SpotifyUser&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<dl><dt><a name="PlaylistGeneratorAiModel-create_playlist"><strong>create_playlist</strong></a>(self, description: str, amount: int)</dt><dd><tt>Generate&nbsp;playlist&nbsp;based&nbsp;on&nbsp;the&nbsp;description<br>
+Iterate&nbsp;over&nbsp;the&nbsp;generated&nbsp;songs&nbsp;and&nbsp;search&nbsp;for&nbsp;them&nbsp;in&nbsp;Spotify<br>
+:param&nbsp;description:&nbsp;description&nbsp;of&nbsp;the&nbsp;playlist&nbsp;style&nbsp;or&nbsp;mood<br>
+:param&nbsp;amount:&nbsp;number&nbsp;of&nbsp;songs&nbsp;to&nbsp;generate<br>
+:return:&nbsp;playlist&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;a&nbsp;list&nbsp;of&nbsp;Track&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="PlaylistGeneratorAiModel-generate_playlist"><strong>generate_playlist</strong></a>(self, description: str, amount: int = 10)</dt><dd><tt>Generate&nbsp;playlist&nbsp;based&nbsp;on&nbsp;the&nbsp;description<br>
+:param&nbsp;description:&nbsp;description&nbsp;of&nbsp;the&nbsp;playlist&nbsp;style&nbsp;or&nbsp;mood<br>
+:param&nbsp;amount:&nbsp;number&nbsp;of&nbsp;songs&nbsp;to&nbsp;generate<br>
+:return:&nbsp;songs&nbsp;generated&nbsp;by&nbsp;the&nbsp;AI&nbsp;model&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;a&nbsp;list</tt></dd></dl>
+
+<dl><dt><a name="PlaylistGeneratorAiModel-search_spotify"><strong>search_spotify</strong></a>(self, song_name: str) -&gt; models.track.Track</dt><dd><tt>Search&nbsp;Spotify&nbsp;for&nbsp;a&nbsp;song<br>
+:param&nbsp;song_name:&nbsp;given&nbsp;song&nbsp;name<br>
+:return:&nbsp;Search&nbsp;results&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;a&nbsp;Track&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>gemini_api_key</strong> = 'AIzaSyAxkGl9kNzM6LZFNlolK4xnZKxNhZOzuog'</td></tr></table>
+</body></html>
