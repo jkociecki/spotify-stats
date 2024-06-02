@@ -149,6 +149,14 @@ To use the Spotify API, you need to create an application on the [Spotify Develo
 ## Google AI Studi
 In order to generate playlists with the help of artificial intelligence, after entering a given description, an API token is needed. You can get yours [here](https://aistudio.google.com/app/apikey?_gl=1*15ldrt3*_ga*MTA2MDczNDkwLjE3MTcxOTM1MDQ.*_ga_P1DBVKWT6V*MTcxNzM0ODYyMC4yLjEuMTcxNzM0ODY1Ni4wLjAuMzgyNTk5OTU3)
 
+## Documentation
+
+The documentation for the project is available in the following links:
+
+- [Controllers](docs/controllers/controllers.html)
+- [Modules](docs/models/models.html)
+- [Views](docs/views/views.html)
+
 ## Contributing
 
 Contributions to the project are welcome! To suggest features, report bugs, or contribute code, please open an issue or a pull request on GitHub.
