@@ -153,9 +153,9 @@ In order to generate playlists with the help of artificial intelligence, after e
 
 The documentation for the project is available at the following links:
 
-- [Controllers](https://github.com/jkociecki/spotify-stats/blob/master/docs/controllers/controllers.html)
-- [Models](https://github.com/jkociecki/spotify-stats/blob/master/docs/models/models.html)
-- [Views](https://github.com/jkociecki/spotify-stats/blob/master/docs/views/views.html)
+- [Controllers](https://jkociecki.github.io/spotify-stats/controllers/controllers.html)
+- [Models](https://jkociecki.github.io/spotify-stats/models/models.html)
+- [Views](https://jkociecki.github.io/spotify-stats/views/views.html)
 
 ## Contributing
 
