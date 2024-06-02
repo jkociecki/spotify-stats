@@ -1,11 +1,44 @@
+"""
+This file contains a class and a function to facilitate the Spotify authorization process by creating a simple HTTP server
+to receive the authorization code and exchange it for an access token.
+
+Classes:
+    SpotifyAuthHandler
+
+Functions:
+    start_auth_server
+"""
+
 import requests
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import urllib.parse
 import webbrowser
+import os
+from dotenv import load_dotenv
 
 
 class SpotifyAuthHandler(BaseHTTPRequestHandler):
+    """
+    A class to handle the Spotify authorization process.
+
+    This class creates an HTTP server to receive the Spotify authorization code via a GET request,
+    then exchanges this code for an access token.
+
+    Methods:
+        do_GET(self):
+            Handles GET requests sent to the server. Extracts the authorization code and requests an access token.
+
+        get_access_token(self, code):
+            Exchanges the authorization code for an access token by making a POST request to the Spotify API.
+    """
+
     def do_GET(self):
+        """
+        Handle GET requests to the server.
+
+        This method sends a 200 response and extracts the authorization code from the request URL.
+        It then uses the authorization code to get an access token and writes a success message to the client.
+        """
         self.send_response(200)
         self.end_headers()
         query = urllib.parse.urlparse(self.path).query
@@ -17,8 +50,20 @@ class SpotifyAuthHandler(BaseHTTPRequestHandler):
             print("Access Token:", self.server.access_token)
 
     def get_access_token(self, code):
-        client_id = '1da6cc873e344e9f9ac5838978410461'
-        client_secret = '197ad99f433340e298e6c1e67c1b0089'
+        """
+        Get an access token using the provided authorization code.
+
+        This method makes a POST request to the Spotify API to exchange the authorization code for an access token.
+
+        Parameters:
+            code (str): The authorization code received from Spotify.
+
+        Returns:
+            str: The access token received from Spotify.
+        """
+        load_dotenv()
+        client_id = os.getenv('CLIENT_ID')
+        client_secret = os.getenv('CLIENT_SECRET')
         redirect_uri = 'http://localhost:8888/callback'
         data = {
             'grant_type': 'authorization_code',
@@ -33,6 +78,15 @@ class SpotifyAuthHandler(BaseHTTPRequestHandler):
 
 
 def start_auth_server():
+    """
+    Start the authorization server and open the Spotify authorization URL in a web browser.
+
+    This function sets up an HTTP server to handle the Spotify authorization callback.
+    It constructs the authorization URL with the required scopes and opens it in the default web browser.
+
+    Returns:
+        str: The access token received from Spotify.
+    """
     server_address = ('', 8888)
     httpd = HTTPServer(server_address, SpotifyAuthHandler)
     scope = (

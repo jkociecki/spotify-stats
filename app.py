@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from models.user_data import *
+from models.user_data import SpotifyUser
 from views.topviews.toptracksview import TopTracksView
 from views.homepage import HomePage
 from views.topviews.topartistview import TopArtistView
@@ -7,7 +7,7 @@ from views.playlist_generator_artists import ArtistPlaylistView, TracksPlaylistV
 from views.playlist_generator_tracks import TrackPlaylistView
 from models.playlist_model import PlaylistModelArtists
 from controllers.playlist_controler import PlaylistController
-from models.playlists import PlaylistsView
+from views.playlists_stats_view import PlaylistsStatsView
 from controllers.playlist_stats_controller import PlaylistStatsController
 from views.playlist_generator_genre import GenresPlaylistGeneratorView
 from controllers.playlist_generator_genre_controller import PlaylistGeneratorGenController
@@ -19,7 +19,21 @@ ctk.set_default_color_theme('green')
 
 
 class App(ctk.CTk):
+    """
+    Main application class for the Tkinter-based Spotify interface.
+
+    Attributes:
+        sp (SpotifyUser): The Spotify user object, initialized after authorization.
+        navigation_frame (ctk.CTkFrame): Frame for navigation buttons.
+        container (ctk.CTkFrame): Main container frame for displaying different views.
+        frames (dict): Dictionary to hold initialized frames.
+        initialized_frames (set): Set to track frames that have been initialized.
+    """
+
     def __init__(self):
+        """
+        Initialize the main application window and its components.
+        """
         super().__init__()
 
         # Setting up Initial Things
@@ -43,12 +57,18 @@ class App(ctk.CTk):
         self.show_authorization_frame()
 
     def show_authorization_frame(self):
+        """
+        Display the authorization frame for user authentication.
+        """
         self.authorization_frame = ctk.CTkFrame(self, bg_color="#8AA7A9")
         self.authorization_frame.pack(fill="both", expand=True)
         authorize_button = ctk.CTkButton(self.authorization_frame, text="Autoryzuj", command=self.authorize_user)
         authorize_button.pack(pady=20, padx=20)
 
     def authorize_user(self):
+        """
+        Handle user authorization and set up the main application interface.
+        """
         self.sp = SpotifyUser()  # Autoryzacja użytkownika
 
         # Removing authorization frame
@@ -66,6 +86,9 @@ class App(ctk.CTk):
         self.show_frame(HomePage)
 
     def add_navigation_buttons(self):
+        """
+        Add navigation buttons to the navigation frame.
+        """
         home_button = ctk.CTkButton(self.navigation_frame, text="Home Page", command=lambda: self.show_frame(HomePage))
         home_button.pack(pady=10, padx=10)
 
@@ -78,7 +101,7 @@ class App(ctk.CTk):
         top_artists_button.pack(pady=10, padx=10)
 
         playlist_overview_button = ctk.CTkButton(self.navigation_frame, text="Playlist Overview",
-                                                 command=lambda: self.show_frame(PlaylistsView))
+                                                 command=lambda: self.show_frame(PlaylistsStatsView))
         playlist_overview_button.pack(pady=10, padx=10)
 
         playlist_button = ctk.CTkButton(self.navigation_frame, text="Playlist Generator",
@@ -94,19 +117,28 @@ class App(ctk.CTk):
         genre_playlist_button.pack(pady=10, padx=10)
 
         gemini_playlist_button = ctk.CTkButton(self.navigation_frame, text='AI playlist generator',
-                                                command=lambda: self.show_frame(GeminiPlaylistView))
+                                               command=lambda: self.show_frame(GeminiPlaylistView))
         gemini_playlist_button.pack(pady=10, padx=10)
 
     def create_frame(self, frame_class):
+        """
+        Create and return an instance of the specified frame class.
+
+        Args:
+            frame_class: The class of the frame to create.
+
+        Returns:
+            An instance of the specified frame class.
+        """
         if frame_class == HomePage:
             frame = HomePage(self.container, bg_color="#8AA7A9", spotify_user=self.sp)
         elif frame_class == TopTracksView:
             frame = TopTracksView(self.container, bg_color="#8AA7A9", spotify_user=self.sp)
         elif frame_class == TopArtistView:
             frame = TopArtistView(self.container, bg_color="#8AA7A9", spotify_user=self.sp)
-        elif frame_class == PlaylistsView:
+        elif frame_class == PlaylistsStatsView:
             playlist_controller = PlaylistStatsController(self.sp)
-            frame = PlaylistsView(self.container, playlist_controller, width=500, height=500)
+            frame = PlaylistsStatsView(self.container, playlist_controller, width=500, height=500)
         elif frame_class == ArtistPlaylistView:
             frame = ArtistPlaylistView(self.container, self.sp)
             playlist_model = PlaylistModelArtists(self.sp.get_authorized_spotify_object(), 'artist')
@@ -126,6 +158,12 @@ class App(ctk.CTk):
         return frame
 
     def show_frame(self, cont):
+        """
+        Display the specified frame in the main container.
+
+        Args:
+            cont: The class of the frame to display.
+        """
         if cont not in self.frames:
             frame = self.create_frame(cont)
             self.frames[cont] = frame

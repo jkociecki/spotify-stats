@@ -13,6 +13,8 @@ class GeminiPLaylistController:
         self.view.set_controller(self)
 
     def generate_playlist(self):
+        self.view.playlist_listbox.delete(0, END)
+        self.view.generated_playlist_uris = []
         description = self.view.description_entry.get("1.0", END)
         amount = self.view.amount_entry.get()
         if description and amount:

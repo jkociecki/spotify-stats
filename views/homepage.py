@@ -8,7 +8,31 @@ from models.user_data import SpotifyUser
 
 
 class HomePage(ctk.CTkFrame):
+    """
+    A class to represent the Home Page view.
+
+    This class inherits from the CTkFrame class and provides functionalities to display
+    the Spotify user's information such as profile, currently playing track, playlists,
+    recently played tracks, followed artists, and top artists.
+
+    Attributes:
+        spotify_user (SpotifyUser): The SpotifyUser object for the authenticated user.
+        spotify (Spotify): The Spotify object authorized for API calls.
+
+    Methods:
+        create_widgets(user_info, current_track_info, playlists, recently_played, following, top_artists):
+            Create and arrange widgets in the view based on user's Spotify information.
+    """
+
     def __init__(self, parent: ctk.CTk, bg_color="#8AA7A9", spotify_user: SpotifyUser = None):
+        """
+        Initialize the HomePage class.
+
+        Parameters:
+            parent (ctk.CTk): The parent widget.
+            bg_color (str): The background color of the frame. Defaults to "#8AA7A9".
+            spotify_user (SpotifyUser): The SpotifyUser object for the authenticated user.
+        """
         super().__init__(parent, bg_color=bg_color)
         self.spotify_user = spotify_user
 
@@ -23,6 +47,17 @@ class HomePage(ctk.CTkFrame):
         self.create_widgets(user_info, current_track_info, playlists, recently_played, following, top_artists)
 
     def create_widgets(self, user_info, current_track_info, playlists, recently_played, following, top_artists):
+        """
+        Create and arrange widgets in the view based on user's Spotify information.
+
+        Parameters:
+            user_info (dict): The current user's information.
+            current_track_info (dict): The currently playing track's information.
+            playlists (dict): The user's playlists.
+            recently_played (dict): The user's recently played tracks.
+            following (dict): The artists the user is following.
+            top_artists (list): The user's top artists.
+        """
         # User Info Frame
         user_info_frame = ctk.CTkFrame(self)
         user_info_frame.pack(padx=20, pady=5, fill="x")
@@ -47,6 +82,7 @@ class HomePage(ctk.CTkFrame):
 
         currently_playing_label = ctk.CTkLabel(self, text="Currently Playing", font=("Arial", 16))
         currently_playing_label.pack(pady=5)
+
         # Current Track Frame
         track_info_frame = ctk.CTkFrame(self)
         track_info_frame.pack(padx=20, pady=5, fill="x")

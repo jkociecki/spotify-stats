@@ -4,7 +4,21 @@ from controllers.playlist_generator_genre_controller import PlaylistGeneratorGen
 
 
 class GenresPlaylistGeneratorView(ctk.CTkFrame):
+    """
+    A custom Tkinter frame for generating playlists based on selected genres.
+
+    Attributes:
+        controller (PlaylistGeneratorGenController): The controller for handling user interactions.
+        generated_playlist_uris (list): List of URIs for the generated playlist.
+    """
+
     def __init__(self, parent: ctk.CTk):
+        """
+        Initialize the GenresPlaylistGeneratorView.
+
+        Args:
+            parent (ctk.CTk): The parent Tkinter window or frame.
+        """
         super().__init__(parent)
         self.controller = None
         self.generated_playlist_uris = []
@@ -17,6 +31,12 @@ class GenresPlaylistGeneratorView(ctk.CTkFrame):
         self.create_widgets()
 
     def set_controller(self, controller: PlaylistGeneratorGenController):
+        """
+        Set the controller for the view and update the button commands.
+
+        Args:
+            controller (PlaylistGeneratorGenController): The controller to be set.
+        """
         self.controller = controller
         self.chart_frame = self.controller.get_radar_chart_frame(self)
         self.chart_frame.grid(row=0, column=0, rowspan=2, sticky="nsew", padx=10, pady=10)
@@ -25,6 +45,9 @@ class GenresPlaylistGeneratorView(ctk.CTkFrame):
         self.generate_button.configure(command=self.controller.generate_playlist)
 
     def create_widgets(self):
+        """
+        Create and configure the widgets for the view.
+        """
         # Create the radar chart frame
         self.chart_frame_placeholder = ctk.CTkFrame(self, corner_radius=10)
         self.chart_frame_placeholder.grid(row=0, column=0, rowspan=2, sticky="nsew", padx=10, pady=10)
@@ -102,27 +125,54 @@ class GenresPlaylistGeneratorView(ctk.CTkFrame):
         self.playlist_tracks_entry.pack(fill='x', padx=10, pady=10)
 
         self.download_button = ctk.CTkButton(self.controls_frame, text="Download Playlist",
-                                            command=lambda: self.controller.download_playlist(
-                                                name=self.playlist_name_entry.get(),
-                                                description=self.playlist_desc_entry.get()
-                                            ))
+                                             command=lambda: self.controller.download_playlist(
+                                                 name=self.playlist_name_entry.get(),
+                                                 description=self.playlist_desc_entry.get()
+                                             ))
         self.download_button.pack(pady=5)
 
     def load_genres(self, genres: list):
+        """
+        Load the list of genres into the genres listbox.
+
+        Args:
+            genres (list): A list of genre names to be loaded.
+        """
         for genre in genres:
             self.genres_list.insert(END, genre)
 
     def get_selected_genres(self):
+        """
+        Get the selected genres from the genres listbox.
+
+        Returns:
+            list: A list of selected genres.
+        """
         selected_indices = self.genres_list.curselection()
         return [self.genres_list.get(i) for i in selected_indices]
 
     def get_playlist_tracks_entry(self):
+        """
+        Get the number of tracks entry from the user input.
+
+        Returns:
+            str: The number of tracks as a string.
+        """
         return self.playlist_tracks_entry.get()
 
     def clear_tracks_entry(self):
+        """
+        Clear the number of tracks entry field.
+        """
         self.playlist_tracks_entry.delete(0, END)
 
     def update_playlist(self, track_names: list):
+        """
+        Update the playlist listbox with the provided track names.
+
+        Args:
+            track_names (list): A list of track names to be displayed in the listbox.
+        """
         self.playlist_listbox.delete(0, END)
         for name in track_names:
             self.playlist_listbox.insert(END, name)

@@ -4,9 +4,22 @@ import customtkinter as ctk
 from tkinter import Listbox, StringVar, END
 from controllers.playlist_controler import PlaylistController
 
-
 class BasePlaylistView(ctk.CTkFrame):
+    """
+    A custom Tkinter frame for generating playlists based on selected artists.
+
+    Attributes:
+        controller (PlaylistController): The controller for handling user interactions.
+        spotify_user (SpotifyUser): The Spotify user object.
+    """
     def __init__(self, master, spotify_user: SpotifyUser):
+        """
+        Initialize the BasePlaylistView.
+
+        Args:
+            master: The parent Tkinter window or frame.
+            spotify_user (SpotifyUser): The Spotify user object.
+        """
         super().__init__(master)
         self.controller: PlaylistController = None
         self.spotify_user = spotify_user
@@ -15,11 +28,13 @@ class BasePlaylistView(ctk.CTkFrame):
         self.setup_ui()
 
     def setup_ui(self):
+        """Set up the user interface."""
         self.create_search_frame()
         self.create_artist_list_frame()
         self.create_playlist_frame()
 
     def create_search_frame(self):
+        """Create the search frame."""
         self.search_frame = ctk.CTkFrame(self)
         self.search_frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
         self.search_entry = ctk.CTkEntry(self.search_frame, placeholder_text="Search...")
@@ -44,6 +59,7 @@ class BasePlaylistView(ctk.CTkFrame):
         self.clear_button.pack(fill="x", padx=10, pady=10)
 
     def create_artist_list_frame(self):
+        """Create the artist list frame."""
         self.artist_list_frame = ctk.CTkFrame(self)
         self.artist_list_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         self.selected_listbox = Listbox(self.artist_list_frame, bg="#2C2C2C", fg="#FFFFFF", highlightthickness=0)
@@ -67,15 +83,15 @@ class BasePlaylistView(ctk.CTkFrame):
         self.download_playlist_button = ctk.CTkButton(self.form_frame, text="Download Playlist",
                                                       command=lambda: self.controller.download_playlist(
                                                           name=self.playlist_name_entry.get(),
-                                                           description=self.playlist_desc_entry.get()
-
+                                                          description=self.playlist_desc_entry.get()
                                                       ))
         self.download_playlist_button.pack(pady=10)
         self.clear_artists_button = ctk.CTkButton(self.form_frame, text="Clear Artists",
-                                                    command=lambda: self.controller.clear_selected_artists())
+                                                  command=lambda: self.controller.clear_selected_artists())
         self.clear_artists_button.pack(pady=10)
 
     def create_playlist_frame(self):
+        """Create the playlist frame."""
         self.playlist_frame = ctk.CTkFrame(self)
         self.playlist_frame.grid(row=0, column=2, sticky="nsew", padx=10, pady=10)
         self.generated_listbox = Listbox(self.playlist_frame, bg="#2C2C2C", fg="#FFFFFF", highlightthickness=0)
@@ -94,24 +110,43 @@ class BasePlaylistView(ctk.CTkFrame):
         self.preview_track_button.grid(row=0, column=1, padx=10, pady=10, sticky="we")
 
     def update_results(self, results: list):
+        """
+        Update the search results listbox with the provided results.
+
+        Args:
+            results (list): A list of search results.
+        """
         self.results_listbox.delete(0, END)
         for item in results:
             self.results_listbox.insert(END, item['name'])
 
     def update_selected_listbox(self, selected_items: list):
+        """
+        Update the selected artists listbox with the provided items.
+
+        Args:
+            selected_items (list): A list of selected items.
+        """
         self.selected_listbox.delete(0, END)
         for item in selected_items:
             self.selected_listbox.insert(END, item['name'])
 
     def update_playlist(self, playlist: list):
+        """
+        Update the generated playlist listbox with the provided tracks.
+
+        Args:
+            playlist (list): A list of tracks.
+        """
         self.generated_listbox.delete(0, END)
         for track in playlist:
             self.generated_listbox.insert(END, track)
 
     def show_details(self, item):
         """
-        Implementation should be specified in the subclass
-        :param item:
-        :return:
+        Show details for the selected item. Should be implemented in the subclass.
+
+        Args:
+            item: The item for which details should be shown.
         """
         pass

@@ -7,6 +7,7 @@ class PlaylistStatsController:
     """
     Controller class for controlling playlist statistics
     """
+
     def __init__(self, user):
         """
         :param user:
@@ -180,4 +181,4 @@ class PlaylistStatsController:
         ax.figure.set_facecolor('#2e2e2e')
         ax.grid(True)
         ax.spines['polar'].set_visible(False)
-        ax.legend(loc='upper left', bbox_to_anchor=(1.1, 1.05))
+        ax.legend(loc='upper left', bbox_to_anchor=(1, 1))

@@ -4,7 +4,15 @@ from io import BytesIO
 
 
 class Track:
+    """
+    Class representing a track, with all its data
+    """
     def __init__(self, track_id, sp):
+        """
+        Initialize the track object, extract all the data from the Spotify API
+        :param track_id: id of the track in the Spotify API
+        :param sp: SpotifyUser object
+        """
         self.track_id = track_id
         self.sp = sp
 

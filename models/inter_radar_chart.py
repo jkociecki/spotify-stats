@@ -6,6 +6,14 @@ import customtkinter as ctk
 
 
 def create_radar_chart(ax, categories, values, color='lightblue'):
+    """
+    Create radar chart with given categories and values
+    :param ax: plot axis object
+    :param categories: list of categories to display, corresponding to the values
+    :param values: numerical values for each category
+    :param color: color of the radar chart
+    :return: created radar chart
+    """
     N = len(categories)
     angles = [n / float(N) * 2 * pi for n in range(N)]
     angles += angles[:1]
@@ -27,21 +35,31 @@ def create_radar_chart(ax, categories, values, color='lightblue'):
     return ax
 
 
-
-
-
 class RadarChartFrame(ctk.CTkFrame):
+    """
+    Radar chart frame for displaying and interacting with radar charts
+    """
     def __init__(self, parent, categories, values):
+        """
+        Initialize RadarChartFrame
+        :param parent: parent frame for the radar chart
+        :param categories: categories to display on the radar chart
+        :param values: values for each category
+        """
         super().__init__(parent)
         self.categories = categories
         self.values = values
-
         self.frame = ctk.CTkFrame(self, corner_radius=10)
         self.frame.pack(fill="both", expand=True, padx=10, pady=10)
-
         self.create_chart()
 
     def create_chart(self):
+        """
+        Create radar chart, place it in canvas
+        setup event listeners for interaction
+        :return: interactive radar chart
+        """
+
         self.fig, self.ax = plt.subplots(subplot_kw={'polar': True})
         create_radar_chart(self.ax, self.categories, self.values)
 
@@ -56,6 +74,12 @@ class RadarChartFrame(ctk.CTkFrame):
         self.selected_point = None
 
     def on_click(self, event):
+        """
+        Handle click event on radar chart
+        Choose the closest point to the click event with a tolerance radius
+        :param event: on click event
+        :return: None
+        """
         if event.inaxes != self.ax:
             return
 
@@ -72,6 +96,12 @@ class RadarChartFrame(ctk.CTkFrame):
                 self.selected_point = closest_point_idx
 
     def on_motion(self, event):
+        """
+        Handle motion event on radar chart
+        Change the value of the selected point based on the y coordinate of the event
+        :param event: motion of the mouse
+        :return: None
+        """
         if self.selected_point is None or event.inaxes != self.ax:
             return
 
@@ -81,7 +111,17 @@ class RadarChartFrame(ctk.CTkFrame):
         self.canvas.draw_idle()
 
     def on_release(self, event):
+        """
+        Handle release event on radar chart
+        Reset the selected point to None
+        :param event: release of the mouse click
+        :return: None
+        """
         self.selected_point = None
 
     def get_current_state(self):
+        """
+        Get the current state of the radar chart
+        :return: categories and values
+        """
         return zip(self.categories, self.values)

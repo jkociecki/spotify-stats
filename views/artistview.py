@@ -9,7 +9,36 @@ from controllers.music_player_controler import ArtistInfoController
 
 
 class ArtistInfoView(ctk.CTkFrame):
+    """
+    A class to represent the artist information view.
+
+    This class inherits from the CTkFrame class and provides functionalities to display detailed information
+    about a Spotify artist, including their name, image, popularity, followers, and top tracks.
+
+    Attributes:
+        artist (Artist): The artist object containing artist information.
+        music_player (MusicPlayer): The music player object to control music playback.
+        progress_var (ctk.DoubleVar): Variable to track the progress of the music.
+        current_track_uri (str): URI of the current track being played.
+        controller (ArtistInfoController): Controller to manage music playback.
+
+    Methods:
+        create_widgets(): Create and arrange widgets in the view.
+        update_and_play(track_uri): Update the current track URI and play the track.
+        play_current_track(): Play the current track if a track is selected.
+        update_progress(): Update the progress bar of the current track.
+        close_window(): Close the window and reset the music player.
+    """
+
     def __init__(self, parent, artist: Artist, music_player: MusicPlayer):
+        """
+        Initialize the ArtistInfoView class.
+
+        Parameters:
+            parent: The parent widget.
+            artist (Artist): The artist object containing artist information.
+            music_player (MusicPlayer): The music player object to control music playback.
+        """
         super().__init__(parent)
         self.artist = artist
         self.music_player = music_player
@@ -21,6 +50,9 @@ class ArtistInfoView(ctk.CTkFrame):
         self.update_progress()
 
     def create_widgets(self):
+        """
+        Create and arrange widgets in the view.
+        """
         main_frame = ctk.CTkFrame(self)
         main_frame.pack(fill="both", expand=True, padx=20, pady=20)
 
@@ -59,7 +91,6 @@ class ArtistInfoView(ctk.CTkFrame):
         controls_frame.pack(pady=5)
 
         self.play_button = ctk.CTkButton(controls_frame, text="Play", command=self.play_current_track)
-
         self.play_button.grid(row=0, column=0, padx=10)
 
         self.stop_button = ctk.CTkButton(controls_frame, text="Stop", command=self.controller.stop_music)
@@ -72,20 +103,35 @@ class ArtistInfoView(ctk.CTkFrame):
         self.close_button.pack(pady=10)
 
     def update_and_play(self, track_uri: str):
+        """
+        Update the current track URI and play the track.
+
+        Parameters:
+            track_uri (str): URI of the track to be played.
+        """
         self.current_track_uri = track_uri
         self.controller.play_toggle(track_uri)
 
     def play_current_track(self):
+        """
+        Play the current track if a track is selected.
+        """
         if self.current_track_uri:
             self.update_and_play(self.current_track_uri)
         else:
             print("No track selected")
+
     def update_progress(self):
+        """
+        Update the progress bar of the current track.
+        """
         self.controller.update_progress()
         self.after(300, self.update_progress)
 
     def close_window(self):
-        # destroy music player and remove file
+        """
+        Close the window and reset the music player.
+        """
         self.music_player.stop_music()
         self.music_player.reset_player()
         self.destroy()

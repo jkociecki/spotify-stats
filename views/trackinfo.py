@@ -10,7 +10,26 @@ from models.music_player import MusicPlayer
 
 
 class TrackInfoWindow(ctk.CTkFrame):
+    """
+    A custom Tkinter frame to display and control track information and playback.
+
+    Attributes:
+        track (Track): The track to display information for.
+        music_player (MusicPlayer): The music player instance for controlling playback.
+        progress_var (DoubleVar): Variable to track the progress of the track.
+    """
+
     def __init__(self, parent, track: Track, music_player: MusicPlayer, *args, **kwargs):
+        """
+        Initialize the TrackInfoWindow.
+
+        Args:
+            parent: The parent Tkinter widget.
+            track (Track): The track to display information for.
+            music_player (MusicPlayer): The music player instance for controlling playback.
+            *args: Additional arguments for the Tkinter Frame.
+            **kwargs: Additional keyword arguments for the Tkinter Frame.
+        """
         super().__init__(parent, *args, **kwargs)
         self.track = track
         self.music_player = music_player
@@ -18,7 +37,7 @@ class TrackInfoWindow(ctk.CTkFrame):
 
         self.controller = TrackInfoController(self, music_player)
 
-        # set width and height of window
+        # Set width and height of window
         self.width = 2000
         self.height = 550
 
@@ -26,9 +45,15 @@ class TrackInfoWindow(ctk.CTkFrame):
         self.update_progress()
 
     def close_window(self):
+        """
+        Close the track information window.
+        """
         self.controller.close_window()
 
     def create_widgets(self):
+        """
+        Create and arrange the widgets in the TrackInfoWindow.
+        """
         main_frame = ctk.CTkFrame(self)
         main_frame.pack(padx=10, pady=10)
 
@@ -48,7 +73,6 @@ class TrackInfoWindow(ctk.CTkFrame):
             image_ctk = ctk.CTkImage(light_image=image, dark_image=image, size=(250, 250))
             image_label = ctk.CTkLabel(image_frame, image=image_ctk, text='')
             image_label.pack(pady=10)
-
         except requests.RequestException as e:
             print(f"Failed to load image: {e}")
 
@@ -83,5 +107,8 @@ class TrackInfoWindow(ctk.CTkFrame):
         self.progress_bar.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
 
     def update_progress(self):
+        """
+        Update the progress bar to reflect the current playback position of the track.
+        """
         self.controller.update_progress()
         self.after(300, self.update_progress)
