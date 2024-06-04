@@ -1,4 +1,4 @@
-`# Spotify Playlist Generator
+# Spotify Playlist Generator
 
 ## Project Description
 
@@ -12,6 +12,7 @@ The Spotify Playlist Generator is an application built using Tkinter and CustomT
 - **Preview and Play Tracks**: Preview and listen to the generated tracks.
 - **View Top Tracks and Artists**: Display the user's top tracks and artists.
 - **Playlist Statistics**: Show statistics for selected playlists.
+- **Eat Your Playlist**: Play the game of snake eating your playlist's track covers while listening to music
 
 ## Installation 
 
@@ -99,6 +100,9 @@ myproject/
 │   ├── playlist_model.py
 │   ├── track.py
 │   └── user_data.py
+├── snake/
+│   ├── snake_data_controller.py
+│   ├── snake.py
 ├── views/
 │   ├── gemini_playlist_view.py
 │   ├── homepage.py
@@ -139,8 +143,11 @@ The `views` directory contains the user interface components built with Tkinter 
 - protobuf==5.27.0
 - pygame==2.5.2
 - python-dotenv==1.0.1
-- Requests==2.32.3
+- Requests~=2.31.0
 - spotipy==2.23.0
+- future~=1.0.0
+- aiohttp~=3.9.5
+- aiofiles~=22.1.0
 
 ## Spotify API Configuration
 
