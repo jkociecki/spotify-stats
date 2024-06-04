@@ -14,6 +14,7 @@ class PlaylistStatsController:
         """
         self.user = user
         self.current_playlist_summary = None
+        self.current_playlist = ''
 
     def get_user_playlists(self):
         """

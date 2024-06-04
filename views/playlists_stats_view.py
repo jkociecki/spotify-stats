@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import customtkinter as ctk
 from controllers.playlist_stats_controller import PlaylistStatsController
+from snake.snake_data_controller import main as snake_main
+from snake.snake_data_controller import run
 
 
 class PlaylistsStatsView(ctk.CTkFrame):
@@ -81,6 +83,7 @@ class PlaylistsStatsView(ctk.CTkFrame):
         Args:
             playlist: The selected playlist object.
         """
+        self.controller.current_playlist = playlist.playlist_id
         self.display_tracks(playlist)
         self.display_summary(playlist)
         self.display_radar_chart(None, playlist)
@@ -164,9 +167,16 @@ class PlaylistsStatsView(ctk.CTkFrame):
                      text=f"Most common genre: {self.controller.get_most_common_genres(playlist)}").pack(pady=5)
         ctk.CTkLabel(self.playlist_summary_frame,
                      text=f"Most common year: {self.controller.get_most_common_years(playlist)}").pack(pady=5)
+        ctk.CTkButton(self.playlist_summary_frame, text="Eat This Playlsit!",
+                      command=lambda: self.eat_this_playlist(playlist.playlist_id)).pack(pady=5)
 
+    def eat_this_playlist(self, playlist_id: str):
+        """
+        Eat this playlist button handler.
+        """
+        snake_main(playlist_id, self.controller.user.sp)
+        run()
 
-import customtkinter as ctk
 
 if __name__ == "__main__":
     user = SpotifyUser()

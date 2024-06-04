@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module snake.snake_data_controller</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="snake.html"><font color="#ffffff">snake</font></a>.snake_data_controller</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../..">index</a><br><a href="file:c%3A%5Cusers%5Cflex%205%20iil%5Conedrive%5Cdesktop%5Cstudia%5Csemestr%204%5Cskryptowe%5Cprojekt%5Csnake%5Csnake_data_controller.py">c:\users\flex 5 iil\onedrive\desktop\studia\semestr 4\skryptowe\projekt\snake\snake_data_controller.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="aiofiles.html">aiofiles</a><br>
+</td><td width="25%" valign=top><a href="aiohttp.html">aiohttp</a><br>
+</td><td width="25%" valign=top><a href="asyncio.html">asyncio</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>async <a name="-download_file"><strong>download_file</strong></a>(session, url, dest)</dt><dd><tt>Asynchronously&nbsp;download&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;given&nbsp;URL&nbsp;to&nbsp;the&nbsp;specified&nbsp;destination.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;session&nbsp;(aiohttp.ClientSession):&nbsp;The&nbsp;session&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;url&nbsp;(str):&nbsp;The&nbsp;URL&nbsp;of&nbsp;the&nbsp;file&nbsp;to&nbsp;download.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dest&nbsp;(str):&nbsp;The&nbsp;destination&nbsp;path&nbsp;to&nbsp;save&nbsp;the&nbsp;downloaded&nbsp;file.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;asyncio.TimeoutError:&nbsp;If&nbsp;the&nbsp;request&nbsp;times&nbsp;out.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;aiohttp.ClientError:&nbsp;If&nbsp;there&nbsp;is&nbsp;an&nbsp;error&nbsp;with&nbsp;the&nbsp;client.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Exception:&nbsp;For&nbsp;any&nbsp;other&nbsp;unexpected&nbsp;errors.</tt></dd></dl>
+ <dl><dt>async <a name="-download_files"><strong>download_files</strong></a>(tracks: List[Tuple[str, str, str]])</dt><dd><tt>Asynchronously&nbsp;download&nbsp;cover&nbsp;images&nbsp;and&nbsp;preview&nbsp;files&nbsp;for&nbsp;a&nbsp;list&nbsp;of&nbsp;tracks.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tracks&nbsp;(List[Tuple[str,&nbsp;str,&nbsp;str]]):&nbsp;A&nbsp;list&nbsp;of&nbsp;tuples&nbsp;containing&nbsp;track&nbsp;title,&nbsp;preview&nbsp;URL,&nbsp;and&nbsp;cover&nbsp;URL.</tt></dd></dl>
+ <dl><dt><a name="-extract_playlist_data"><strong>extract_playlist_data</strong></a>(playlist_id: str, sp: spotipy.client.Spotify) -&gt; List[Tuple[str, str, str]]</dt><dd><tt>Extract&nbsp;track&nbsp;data&nbsp;from&nbsp;a&nbsp;Spotify&nbsp;playlist.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;playlist_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;Spotify&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sp&nbsp;(Spotify):&nbsp;The&nbsp;Spotify&nbsp;client&nbsp;object.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List[Tuple[str,&nbsp;str,&nbsp;str]]:&nbsp;A&nbsp;list&nbsp;of&nbsp;tuples&nbsp;containing&nbsp;track&nbsp;title,&nbsp;preview&nbsp;URL,&nbsp;and&nbsp;cover&nbsp;URL.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(playlist_id: str, spotify_user: models.user_data.SpotifyUser)</dt><dd><tt>Main&nbsp;function&nbsp;to&nbsp;set&nbsp;up&nbsp;directories&nbsp;and&nbsp;run&nbsp;the&nbsp;asynchronous&nbsp;main&nbsp;function.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;playlist_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;Spotify&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;spotify_user&nbsp;(SpotifyUser):&nbsp;The&nbsp;Spotify&nbsp;user&nbsp;object.</tt></dd></dl>
+ <dl><dt>async <a name="-main_async"><strong>main_async</strong></a>(playlist_id: str, spotify_user: models.user_data.SpotifyUser)</dt><dd><tt>Asynchronously&nbsp;process&nbsp;the&nbsp;playlist&nbsp;and&nbsp;download&nbsp;the&nbsp;necessary&nbsp;files.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;playlist_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;Spotify&nbsp;playlist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;spotify_user&nbsp;(SpotifyUser):&nbsp;The&nbsp;Spotify&nbsp;user&nbsp;object.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>List</strong> = typing.List<br>
+<strong>Tuple</strong> = typing.Tuple</td></tr></table>
+</body></html>

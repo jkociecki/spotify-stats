@@ -4,6 +4,7 @@ import customtkinter as ctk
 from tkinter import Listbox, StringVar, END
 from controllers.playlist_controler import PlaylistController
 
+
 class BasePlaylistView(ctk.CTkFrame):
     """
     A custom Tkinter frame for generating playlists based on selected artists.
@@ -12,6 +13,7 @@ class BasePlaylistView(ctk.CTkFrame):
         controller (PlaylistController): The controller for handling user interactions.
         spotify_user (SpotifyUser): The Spotify user object.
     """
+
     def __init__(self, master, spotify_user: SpotifyUser):
         """
         Initialize the BasePlaylistView.
@@ -78,7 +80,9 @@ class BasePlaylistView(ctk.CTkFrame):
             radio_button = ctk.CTkRadioButton(self.form_frame, text=text, variable=self.country_var, value=country)
             radio_button.pack(pady=2, anchor='w')
         self.generate_playlist_button = ctk.CTkButton(self.form_frame, text="Generate Playlist",
-                                                      command=lambda: self.controller.generate_playlist())
+                                                      command=lambda: self.controller.generate_playlist(
+                                                          num_tracks=self.num_tracks_entry.get()
+                                                      ))
         self.generate_playlist_button.pack(pady=10)
         self.download_playlist_button = ctk.CTkButton(self.form_frame, text="Download Playlist",
                                                       command=lambda: self.controller.download_playlist(

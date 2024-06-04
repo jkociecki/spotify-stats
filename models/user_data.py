@@ -16,8 +16,17 @@ class SpotifyUser:
         Initialize the SpotifyUser with an access token and Spotify client.
         """
         self.access_token = start_auth_server()
+        #self.access_token = 'BQCVF8VfV5v3HQimhhhGxoZY1ktYtoiOiEmvNN-DAqjA91vmshE0Pg9HBETcx9vb8eZWlIIbxW8H-jAzfM-Ajfl3dLIcA8PefW72gA1w3iNtfROl_-xsBsHlrkJUnKAL_1ZlVbYmn_Oh6L0hvFiNW8HBHrvu_IcMgeolN2I_MAv-Z-nm2Bswxk_r9MYaMLxTliws_tTLwQJZLiwRUV7TTZ31JaaxR9K9wuGsUjkJdy4G8He6uta8ytE0FObh5wZKqlr0ElIwMJrztpX0xkg72BI_1FW4XNyDvJRHodPe6Vg'
         self.sp = spotipy.Spotify(auth=self.access_token)
 
+    def get_access_token(self):
+        """
+        Get the access token.
+
+        Returns:
+            str: Access token.
+        """
+        return self.access_token
     @lru_cache(maxsize=128)
     def get_top_tracks(self, limit=10, time_range='short_term'):
         """

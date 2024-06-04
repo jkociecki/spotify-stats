@@ -3,6 +3,7 @@ import customtkinter as ctk
 import tkinter as tk
 from models.music_player import MusicPlayer
 from models.track import Track
+from views.popups import show_pop_up_window
 
 
 class PlaylistController:
@@ -58,12 +59,18 @@ class PlaylistController:
         self.model.clear_selected_artists()
         self.view.update_selected_listbox(self.model.selected_artists)
 
-    def generate_playlist(self):
+    def generate_playlist(self, num_tracks: str):
         """
         Generate playlist
         :return:
         """
-        playlist = self.model.generate_playlist()
+        if not num_tracks:
+            show_pop_up_window(self.view, 'Please enter number of tracks', 'Error')
+            return
+        elif not num_tracks.isdigit():
+            show_pop_up_window(self.view, 'Please enter a valid number', 'Error')
+            return
+        playlist = self.model.generate_playlist(num_tracks)
         self.view.update_playlist(playlist)
 
     def download_playlist(self, name, description):
@@ -75,25 +82,9 @@ class PlaylistController:
         """
         if name:
             self.model.download_playlist(name=name, description=description)
-            playlist_added_window = ctk.CTkToplevel(self.view)
-            playlist_added_window.title("Playlist Added")
-            playlist_added_label = ctk.CTkLabel(playlist_added_window, text="Playlist added successfully")
-            playlist_added_label.pack(padx=10, pady=10)
-            ok_button = ctk.CTkButton(playlist_added_window, text="OK", command=playlist_added_window.destroy)
-            ok_button.pack(pady=10)
-            playlist_added_window.grab_set()
-            playlist_added_window.wait_window()
-            playlist_added_window.destroy()
+            show_pop_up_window(self.view, 'Playlist added successfully', 'Playlist Added')
         else:
-            error_window = ctk.CTkToplevel(self.view)
-            error_window.title("Error")
-            error_label = ctk.CTkLabel(error_window, text="Name cannot be empty")
-            error_label.pack(padx=10, pady=10)
-            ok_button = ctk.CTkButton(error_window, text="OK", command=error_window.destroy)
-            ok_button.pack(pady=10)
-            error_window.grab_set()
-            error_window.wait_window()
-            error_window.destroy()
+            show_pop_up_window(self.view, 'Please enter a name for the playlist', 'Error')
 
     def delete_track(self, index):
         """

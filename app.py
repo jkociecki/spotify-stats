@@ -15,7 +15,7 @@ from views.gemini_playlist_view import GeminiPlaylistView
 from controllers.gemini_playlist_controller import GeminiPLaylistController
 
 ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme('green')
+#ctk.set_default_color_theme('green')
 
 
 class App(ctk.CTk):
@@ -37,7 +37,7 @@ class App(ctk.CTk):
         super().__init__()
 
         # Setting up Initial Things
-        self.title("Sample Tkinter Structuring")
+        self.title("Spotify Stats")
         self.geometry("720x550")
         self.resizable(True, True)
 
@@ -104,7 +104,7 @@ class App(ctk.CTk):
                                                  command=lambda: self.show_frame(PlaylistsStatsView))
         playlist_overview_button.pack(pady=10, padx=10)
 
-        playlist_button = ctk.CTkButton(self.navigation_frame, text="Playlist Generator",
+        playlist_button = ctk.CTkButton(self.navigation_frame, text="Generate Playlist by Artists",
                                         command=lambda: self.show_frame(ArtistPlaylistView))
         playlist_button.pack(pady=10, padx=10)
 

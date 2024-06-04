@@ -3,12 +3,14 @@ from models.track import Track
 from models.music_player import MusicPlayer
 from models.inter_radar_chart import RadarChartFrame
 from views.trackinfo import TrackInfoWindow
+from views.popups import show_pop_up_window
 
 
 class PlaylistGeneratorGenController:
     """
     Controller class for controlling playlist generation based on genres and features
     """
+
     def __init__(self, view, spotify_user):
         """
         :param view:
@@ -90,22 +92,6 @@ class PlaylistGeneratorGenController:
         """
         if name and self.generated_playlist_uris:
             self.model.download_playlist(name=name, description=description, uris=self.generated_playlist_uris)
-            playlist_added_window = ctk.CTkToplevel(self.view)
-            playlist_added_window.title("Playlist Added")
-            playlist_added_label = ctk.CTkLabel(playlist_added_window, text="Playlist added successfully")
-            playlist_added_label.pack(padx=10, pady=10)
-            ok_button = ctk.CTkButton(playlist_added_window, text="OK", command=playlist_added_window.destroy)
-            ok_button.pack(pady=10)
-            playlist_added_window.grab_set()
-            playlist_added_window.wait_window()
-            playlist_added_window.destroy()
+            show_pop_up_window(self.view, 'Playlist added successfully', 'Playlist Added')
         else:
-            error_window = ctk.CTkToplevel(self.view)
-            error_window.title("Error")
-            error_label = ctk.CTkLabel(error_window, text="Name cannot be empty")
-            error_label.pack(padx=10, pady=10)
-            ok_button = ctk.CTkButton(error_window, text="OK", command=error_window.destroy)
-            ok_button.pack(pady=10)
-            error_window.grab_set()
-            error_window.wait_window()
-            error_window.destroy()
+            show_pop_up_window(self.view, 'Name cannot be empty', 'Error')

@@ -1,4 +1,4 @@
-# Spotify Playlist Generator
+`# Spotify Playlist Generator
 
 ## Project Description
 

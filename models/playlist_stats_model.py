@@ -13,6 +13,7 @@ class Playlist:
         :param sp: SpotifyUser object
         """
         self.playlist_id = playlist_id
+        print('Playlist id:' , playlist_id)
         self.sp = sp
         self.tracks = self.sp.playlist_tracks(playlist_id=self.playlist_id)
         self.playlist = self.sp.playlist(playlist_id)

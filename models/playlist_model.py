@@ -46,7 +46,7 @@ class PlaylistModelArtists:
         """
         self.selected_artists = []
 
-    def generate_playlist(self):
+    def generate_playlist(self, num_tracks=10):
         """
         Generate playlist based on the selected artists or tracks
         Collect the uris of the selected artists or tracks and generate recommendations
@@ -54,9 +54,9 @@ class PlaylistModelArtists:
         """
         list_of_uris = [artist['uri'] for artist in self.selected_artists]
         if self.type == 'artist':
-            recommended_tracks = self.sp.recommendations(seed_artists=list_of_uris, limit=10)['tracks']
+            recommended_tracks = self.sp.recommendations(seed_artists=list_of_uris, limit=num_tracks)['tracks']
         if self.type == 'track':
-            recommended_tracks = self.sp.recommendations(seed_tracks=list_of_uris, limit=10)['tracks']
+            recommended_tracks = self.sp.recommendations(seed_tracks=list_of_uris, limit=num_tracks)['tracks']
         self.generated_playlist = [track['name'] for track in recommended_tracks]
         self.generated_playlist_uris = [track['uri'] for track in recommended_tracks]
         return self.generated_playlist

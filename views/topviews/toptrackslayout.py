@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import pygame
+from views.popups import show_pop_up_window
 
 
 class BaseView(ctk.CTkFrame):
@@ -74,6 +75,8 @@ class BaseView(ctk.CTkFrame):
             event (tkinter.Event): The event object.
         """
         limit = self.limit_entry.get()
+        if not limit.isdigit():
+            show_pop_up_window(self, "Error", "Please enter a valid number for the limit.")
         self.to_be_shown_label.configure(text=f'To be shown: {limit}')
         self.limit_entry.delete(0, 'end')
         if limit.isdigit():

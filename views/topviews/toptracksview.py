@@ -103,3 +103,4 @@ class TopTracksView(BaseView):
         info_popup.grid(row=0, column=5, rowspan=3000, sticky="nsew")
         info_popup.wait_window(info_popup)
         info_popup.grid_forget()
+
