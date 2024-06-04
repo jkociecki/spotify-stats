@@ -132,6 +132,9 @@ The `models` directory contains the data structures and logic for interacting wi
 
 The `views` directory contains the user interface components built with Tkinter and CustomTkinter. This includes different views for generating playlists, displaying top tracks and artists, and showing playlist statistics.
 
+###Snake
+The `snake` directory contains code that handles asynchronous downloading of data about a specific playlist and launching a game of snake
+
 ## Requirements
 
 - Python 3.6+
