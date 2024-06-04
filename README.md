@@ -13,12 +13,12 @@ The Spotify Playlist Generator is an application built using Tkinter and CustomT
 - **View Top Tracks and Artists**: Display the user's top tracks and artists.
 - **Playlist Statistics**: Show statistics for selected playlists.
 
-## Installation
+## Installation 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/jkociecki/spotify-stats
+   cd spotify-stats
    ```
 
 2. **Create and activate a virtual environment**:
@@ -148,6 +148,14 @@ To use the Spotify API, you need to create an application on the [Spotify Develo
 
 ## Google AI Studi
 In order to generate playlists with the help of artificial intelligence, after entering a given description, an API token is needed. You can get yours [here](https://aistudio.google.com/app/apikey?_gl=1*15ldrt3*_ga*MTA2MDczNDkwLjE3MTcxOTM1MDQ.*_ga_P1DBVKWT6V*MTcxNzM0ODYyMC4yLjEuMTcxNzM0ODY1Ni4wLjAuMzgyNTk5OTU3)
+
+## Documentation
+
+The documentation for the project is available at the following links:
+
+- [Controllers](https://jkociecki.github.io/spotify-stats/controllers/controllers.html)
+- [Models](https://jkociecki.github.io/spotify-stats/models/models.html)
+- [Views](https://jkociecki.github.io/spotify-stats/views/views.html)
 
 ## Contributing
 
