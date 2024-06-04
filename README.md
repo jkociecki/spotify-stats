@@ -21,14 +21,8 @@ The Spotify Playlist Generator is an application built using Tkinter and CustomT
    git clone https://github.com/jkociecki/spotify-stats
    cd spotify-stats
    ```
-
-2. **Create and activate a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Set environment variables**:
+   
+2. **Set environment variables**:
    ```bash
    export CLIENT_ID="YOUR SPOTIFY API CLIENT ID"
    export CLIENT_SECRET="YOUR SPOTIFY API CLIENT SECRET KEY"
@@ -42,7 +36,7 @@ The Spotify Playlist Generator is an application built using Tkinter and CustomT
    set GEMINI_API_KEY="YOUR GOOGLE GEMINI API KEY"
    ```
 
-4. **Install required packages**:
+3. **Install required packages**:
    ```bash
    pip install -r requirements.txt
    ```
