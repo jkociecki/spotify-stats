@@ -166,6 +166,7 @@ The documentation for the project is available at the following links:
 - [Controllers](https://jkociecki.github.io/spotify-stats/controllers/controllers.html)
 - [Models](https://jkociecki.github.io/spotify-stats/models/models.html)
 - [Views](https://jkociecki.github.io/spotify-stats/views/views.html)
+- [Snake](https://jkociecki.github.io/spotify-stats/snake/snake.html)
 
 ## Contributing
 
