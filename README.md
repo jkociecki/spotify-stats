@@ -132,7 +132,7 @@ The `models` directory contains the data structures and logic for interacting wi
 
 The `views` directory contains the user interface components built with Tkinter and CustomTkinter. This includes different views for generating playlists, displaying top tracks and artists, and showing playlist statistics.
 
-###Snake
+### Snake
 The `snake` directory contains code that handles asynchronous downloading of data about a specific playlist and launching a game of snake
 
 ## Requirements
@@ -156,7 +156,7 @@ The `snake` directory contains code that handles asynchronous downloading of dat
 
 To use the Spotify API, you need to create an application on the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications) and obtain the API keys.
 
-## Google AI Studi
+## Google AI Studio
 In order to generate playlists with the help of artificial intelligence, after entering a given description, an API token is needed. You can get yours [here](https://aistudio.google.com/app/apikey?_gl=1*15ldrt3*_ga*MTA2MDczNDkwLjE3MTcxOTM1MDQ.*_ga_P1DBVKWT6V*MTcxNzM0ODYyMC4yLjEuMTcxNzM0ODY1Ni4wLjAuMzgyNTk5OTU3)
 
 ## Documentation
@@ -170,10 +170,3 @@ The documentation for the project is available at the following links:
 ## Contributing
 
 Contributions to the project are welcome! To suggest features, report bugs, or contribute code, please open an issue or a pull request on GitHub.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-```
-
-Feel free to modify and expand this `README.md` to suit the specifics of your project. This version includes detailed sections for project description, features, installation, usage, project structure, requirements, and contribution guidelines, along with the addition of example images showcasing different windows of the application.
